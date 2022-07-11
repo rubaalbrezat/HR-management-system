@@ -10,70 +10,74 @@ function employee(employeeID ,FullName,Department, Level,image,Salary){
   this.Department = Department;
   this.Level      = Level;
   this.image      = image;
-  this.Salary     = Salary;
+  this.Salary     = this.Salary;
 
-  allEmp.push(this);
+  allEmp.push(this) ;
 
 
 }
-
-
-
-// identification employee//
-
-  const emp1 = new employee(1000,"Ghazi Samer","Administration","Senior",false);
-  const emp2 = new employee(1001,"Lana Ali","Finance","Senior",false,);
-  const emp3 = new employee(1002,"Tamara Ayoub","Marketing ","Senior",false,);
-  const emp4 = new employee(1003,"Safi Walid","Administration","Mid-Senior",false,);
-  const emp5 = new employee(1004,"Omar Zaid","Development","Senior",false);
-  const emp6 = new employee(1005,"Rana Saleh","Development","Junior",false);
-  const emp7 = new employee(1006,"Hadi Ahmad","Finance","Mid-Senior",false);
-
-
-
-
-
-
 
 
 
 
 // function for calculating the salary//
-   this.Salary=function calSalary()
+   employee.prototype.Salary=function()
 { 
-    let Salary1;
-     if(this.Level=="Senior")
+     if(this.Level==="Senior")
        {
-       Salary1= Math.floor(Math.random()*(2000-1500+1)+1500);
-       } ifelse(this.Level=="Mid-Senior")
+       this.Salary= Math.floor(Math.random()*(2000-1500+1)+1500);
+
+       }
+        if(this.Level==="Mid-Senior")
         {
-         Salary1= Math.floor(Math.random()*(1500-1000+1)+1500);
+         this.Salary= Math.floor(Math.random()*(1500-1000+1)+1500);
 
-         }ifelse(this.Level=="Junior")
-         {
-          Salary1 = Math.floor(Math.random()*(1000-500+1)+1000);
          }
-         return Salary1 - 7.5;
+         if(this.Level==="Junior")
+         {
+          this.Salary = Math.floor(Math.random()*(1000-500+1)+1000);
+         }
         
+         allEmp.push(this.Salary);
 
-         
- 
+        
 
 }
 
  
-  
+///calculatig the net salary//
+employee.prototype.netSalary=function(){
 
-////  display empName &empSalary///
+  this.netSalary = Math.floor(this.Salary-(this.Salary*0.075));
+  allEmp.push(this.netSalary);
+}  
+
+
+
+////  display empName & empSalary && net salary///
   
 employee.prototype.print = function(){
-    document.write(`<p>${this.FullName}: ${this.Salary}JD \n </p> `);
+    document.write(`<p> Full Name: ${this.FullName}: ${this.Salary}JD --> Net Salary =  ${this.netSalary} </p> ` );
    }
+
+   const emp1 = new employee(1000,"Ghazi Samer","Administration","Senior",false,);
+   const emp2 = new employee(1001,"Lana Ali","Finance","Senior",false,);
+   const emp3 = new employee(1002,"Tamara Ayoub","Marketing ","Senior",false,);
+   const emp4 = new employee(1003,"Safi Walid","Administration","Mid-Senior",false,);
+   const emp5 = new employee(1004,"Omar Zaid","Development","Senior",false,);
+   const emp6 = new employee(1005,"Rana Saleh","Development","Junior",false,);
+   const emp7 = new employee(1006,"Hadi Ahmad","Finance","Mid-Senior",false,);
 
 
   for(let i=0;i<allEmp.length;i++){
-    allEmp[i].print(); 
-   }
+    if(typeof allEmp[i] !== "number"){
+    console.log(i,allEmp[i]);
+    allEmp[i].Salary(); 
+    allEmp[i].netSalary();
+    allEmp[i].print();
+    }
+   
+  }
    
    
   
