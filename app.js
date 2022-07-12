@@ -18,6 +18,35 @@ function employee(employeeID ,FullName,Department, Level,image,Salary){
 }
 
 
+  employee.prototype.printCard=function() {
+
+    let z = document.getElementById("zz");
+
+    let emp = document.createElement("img");
+     emp.src=this.image;
+     emp.alt="empPic";
+     z.appendChild(emp);
+     emp.style.cssText="width:100px ; hight:100px";
+
+
+     let a = document.createElement("p");
+     a.textContent = "name: "+this.FullName +"  department: " + this.Department +"  level: " + this.Level;
+     z.appendChild(a);
+
+     z.style.cssText="text-align:center";
+     
+     
+   
+
+
+
+
+
+
+     
+  }
+
+
 
 
 // function for calculating the salary//
@@ -46,36 +75,36 @@ function employee(employeeID ,FullName,Department, Level,image,Salary){
 
  
 ///calculatig the net salary//
-employee.prototype.netSalary=function(){
+/*employee.prototype.netSalary=function(){
 
   this.netSalary = Math.floor(this.Salary-(this.Salary*0.075));
   allEmp.push(this.netSalary);
-}  
+}  */
 
 
 
 ////  display empName & empSalary && net salary///
   
-employee.prototype.print = function(){
+/*employee.prototype.print = function(){
     document.write(`<p> Full Name: ${this.FullName}: ${this.Salary}JD --> Net Salary =  ${this.netSalary} </p> ` );
-   }
+   }*/
 
-   const emp1 = new employee(1000,"Ghazi Samer","Administration","Senior",false,);
-   const emp2 = new employee(1001,"Lana Ali","Finance","Senior",false,);
-   const emp3 = new employee(1002,"Tamara Ayoub","Marketing ","Senior",false,);
-   const emp4 = new employee(1003,"Safi Walid","Administration","Mid-Senior",false,);
-   const emp5 = new employee(1004,"Omar Zaid","Development","Senior",false,);
-   const emp6 = new employee(1005,"Rana Saleh","Development","Junior",false,);
-   const emp7 = new employee(1006,"Hadi Ahmad","Finance","Mid-Senior",false,);
+   const emp1 = new employee(1000,"Ghazi Samer","Administration","Senior", "../assest/Ghazi.jpg");
+   const emp2 = new employee(1001,"Lana Ali","Finance","Senior","../assest/Hadi.jpg");
+   const emp3 = new employee(1002,"Tamara Ayoub","Marketing ","Senior","../assest/Lana.jpg");
+   const emp4 = new employee(1003,"Safi Walid","Administration","Mid-Senior","assest/Omar.jpg");
+   const emp5 = new employee(1004,"Omar Zaid","Development","Senior","assest/Rana.jpg");
+   const emp6 = new employee(1005,"Rana Saleh","Development","Junior","assest/Safi.jpg");
+   const emp7 = new employee(1006,"Hadi Ahmad","Finance","Mid-Senior"," assest/Tamara.jpg");
 
 
   for(let i=0;i<allEmp.length;i++){
-    if(typeof allEmp[i] !== "number"){
-    console.log(i,allEmp[i]);
-    allEmp[i].Salary(); 
-    allEmp[i].netSalary();
-    allEmp[i].print();
-    }
+    
+    
+   // allEmp[i].Salary(); 
+   // allEmp[i].netSalary();
+    allEmp[i].printCard();
+    
    
   }
    
